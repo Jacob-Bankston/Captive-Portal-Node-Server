@@ -65,7 +65,9 @@ app.post("/passwordUpdate", (req, res) => {
 app.post("/buttonPressed", (req, res) => {
   // untested!!!
   gpioswitch.writeSync(1);
-  setTimeout(gpioswitch.writeSync(0), 10000);
+  setTimeout(function() {
+    gpioswitch.writeSync(0);
+  }, 10000);
   res.render("index", { message: "Unlocked!" });
 });
 
